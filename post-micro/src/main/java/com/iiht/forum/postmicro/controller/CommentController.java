@@ -35,34 +35,21 @@ public class CommentController {
 	public ResponseEntity<CommentDetailDto> addComment(@PathVariable("postId") String postId, 
 													   @PathVariable("userId") String userId,
 													   @RequestBody CommentDto comment){
-		CommentDetailDto commentDetail = this.commentService.addComment(comment, postId, userId);
-		ResponseEntity<CommentDetailDto> response = 
-				new ResponseEntity<CommentDetailDto>(commentDetail, HttpStatus.OK);
-		return response;
+		return null;
 	}
 	
 	@GetMapping("/like/{commentId}")
 	public ResponseEntity<Integer> addLike(@PathVariable("commentId") String commentId){
-		Integer likes = this.commentService.addLike(commentId);
-		ResponseEntity<Integer> response = 
-				new ResponseEntity<Integer>(likes, HttpStatus.OK);
-		
-		return response;
+		return null;
 	}
 	
 	@ExceptionHandler(CommentNotFoundException.class)
 	public ResponseEntity<ExceptionDto> commentNotFoundExceptionHandler(CommentNotFoundException ex){
-		System.out.println("Inside handler");
-		ExceptionDto exceptionDto = new ExceptionDto(ex.getMessage(), HttpStatus.NOT_FOUND.value(), System.currentTimeMillis());
-		ResponseEntity<ExceptionDto> response = new ResponseEntity<ExceptionDto>(exceptionDto, HttpStatus.NOT_FOUND);
-		return response;
+		return null;
 	}
 	@ExceptionHandler(CommentException.class)
 	public ResponseEntity<ExceptionDto> commentExceptionHandler(CommentException ex){
-		System.out.println("Inside handler");
-		ExceptionDto exceptionDto = new ExceptionDto(ex.getMessage(), HttpStatus.BAD_REQUEST.value(), System.currentTimeMillis());
-		ResponseEntity<ExceptionDto> response = new ResponseEntity<ExceptionDto>(exceptionDto, HttpStatus.BAD_REQUEST);
-		return response;
+		return null;
 	}
 	
 }

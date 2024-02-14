@@ -43,68 +43,35 @@ public class PostController {
 	
 	@PostMapping("/add/{userId}")
 	public ResponseEntity<PostDetailDto> addPost(@PathVariable("userId") String userId, @Valid @RequestBody PostDto post, BindingResult result){
-		PostDetailDto postDetail = this.postService.addPost(post, userId);
-		ResponseEntity<PostDetailDto> response =
-				new ResponseEntity<PostDetailDto>(postDetail, HttpStatus.OK);
-		
-		return response;
+		return null;
 	}
 	public ResponseEntity<PostDetailDto> defaultAdd(String userId,  PostDto post) {
-		PostDetailDto postDetail = new PostDetailDto("", 
-													 "", 
-													 "", 
-													 "", 
-													 new UserDetailDto("", "", "", "", ""), 
-													 LocalDateTime.now(), 
-													 0, 
-													 new ArrayList<CommentDetailDto>());
-		ResponseEntity<PostDetailDto> response =
-				new ResponseEntity<PostDetailDto>(postDetail, HttpStatus.OK);
-		
-		return response;
+		return null;
 		
 	}
 	
 	@GetMapping("/get/{postId}")
 	public ResponseEntity<PostDetailDto> getPost(@PathVariable("postId") String postId){
-		PostDetailDto postDetail = this.postService.getPost(postId);
-		ResponseEntity<PostDetailDto> response =
-				new ResponseEntity<PostDetailDto>(postDetail, HttpStatus.OK);
-		
-		return response;
+		return null;
 	}
 	
 	@GetMapping("/get-all/{userId}")
 	public ResponseEntity<PostDetailListDto> getAllPostsForUser(@PathVariable("userId") String userId){
-		PostDetailListDto postDetailList = this.postService.getPosts(userId);
-		ResponseEntity<PostDetailListDto> response =
-				new ResponseEntity<PostDetailListDto>(postDetailList, HttpStatus.OK);
-		
-		return response;
+		return null;
 	}
 	
 	@GetMapping("/like/{postId}")
 	public ResponseEntity<Integer> addLike(@PathVariable("postId") String postId){
-		Integer likes = this.postService.addLike(postId);
-		ResponseEntity<Integer> response = 
-				new ResponseEntity<Integer>(likes, HttpStatus.OK);
-		
-		return response;
+		return null;
 	}
 	
 	@ExceptionHandler(PostNotFoundException.class)
 	public ResponseEntity<ExceptionDto> postNotFoundExceptionHandler(PostNotFoundException ex){
-		System.out.println("Inside handler");
-		ExceptionDto exceptionDto = new ExceptionDto(ex.getMessage(), HttpStatus.NOT_FOUND.value(), System.currentTimeMillis());
-		ResponseEntity<ExceptionDto> response = new ResponseEntity<ExceptionDto>(exceptionDto, HttpStatus.NOT_FOUND);
-		return response;
+		return null;
 	}
 	@ExceptionHandler(PostException.class)
 	public ResponseEntity<ExceptionDto> postExceptionHandler(PostException ex){
-		System.out.println("Inside handler");
-		ExceptionDto exceptionDto = new ExceptionDto(ex.getMessage(), HttpStatus.BAD_REQUEST.value(), System.currentTimeMillis());
-		ResponseEntity<ExceptionDto> response = new ResponseEntity<ExceptionDto>(exceptionDto, HttpStatus.BAD_REQUEST);
-		return response;
+		return null;
 	}
 	
 }
